@@ -36,8 +36,8 @@ def can_be_created_in_a_block(args = {})
   Movie.create do |m|
     args.each do |key, value|
       m.send(("#{key}="), value)
-    end 
-  end 
+    end
+  end
 end 
 
 def can_get_the_first_item_in_the_database
