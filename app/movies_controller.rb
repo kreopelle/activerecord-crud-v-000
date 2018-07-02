@@ -22,13 +22,20 @@ def can_be_created_with_a_hash_of_attributes
   movie = Movie.create(attributes)
 end
 
-def can_be_created_in_a_block(args = {title: "Home Alone", release_date: "1990"})
+# def can_be_created_in_a_block(args = {title: "Home Alone", release_date: "1990"})
+#   Movie.create do |m|
+#     m.title = args[:title]
+#     m.release_date = args[:release_date]
+#     m.director = args[:director]
+#     m.lead = args[:lead]
+#     m.in_theaters = args[:in_theaters]
+#   end
+# end
+
+
+def can_be_created_in_a_block(args = {})
   Movie.create do |m|
-    m.title = args[:title]
-    m.release_date = args[:release_date]
-    m.director = args[:director]
-    m.lead = args[:lead]
-    m.in_theaters = args[:in_theaters]
+    args.each {|key, value| self.send(("#{key}="), value)}
   end
 end
 
